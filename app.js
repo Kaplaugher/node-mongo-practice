@@ -1,4 +1,5 @@
 const express = require('express');
+const mongoose = require('mongoose');
 const path = require('path');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
@@ -11,6 +12,10 @@ const app = express();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
+
+// connect to mongodb
+mongoose.connect('mongodb://localhost/ninjago');
+mongoose.Promise = global.Promise;
 
 
 app.use(logger('dev'));
